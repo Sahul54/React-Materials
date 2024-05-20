@@ -82,9 +82,9 @@ const SignupForm = () => {
                 value={formData.CreatePassword}
 
                 ></input>
-                {/* <span onClick={() => setShowPassword((prev) => (!prev))}>
+                <span onClick={() => setShowPassword((prev) => (!prev))}>
                    {showPassword ? (<IoEyeSharp />) : (<FaEyeSlash />)}
-                </span> */}
+                </span>
             </label>
 
             <label>
@@ -98,9 +98,9 @@ const SignupForm = () => {
                 value={formData.confirmPassword}
 
                 ></input>
-                {/* <span onClick={() => setShowPassword((prev) => (!prev))}>
+                <span onClick={() => setShowPassword((prev) => (!prev))}>
                      {showPassword ? (<IoEyeSharp />) : (<FaEyeSlash />)}
-                </span> */}
+                </span>
             </label>
             </div>
             <button>Create Account</button>
