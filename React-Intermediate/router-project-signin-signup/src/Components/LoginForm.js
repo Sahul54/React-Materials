@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FaEyeSlash, IoEyeSharp  } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
+import { IoEyeSharp } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 
 
@@ -45,7 +46,7 @@ const [showPassword, setShowPassword] = useState(false);
             name='password'
             ></input>
             <span onClick={() => setShowPassword((prev) => (!prev))}>
-                {showPassword ? (<IoEyeSharp />) : (<FaEyeSlash />)}
+                {showPassword ? (<FaEyeSlash />) : <IoEyeSharp />}
             </span>
 
             <Link to='#'>

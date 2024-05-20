@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-// import { FaEyeSlash, IoEyeSharp  } from "react-icons/fa";
+import { IoEyeSharp } from "react-icons/io5";
+import { FaEyeSlash } from "react-icons/fa";
 
 const SignupForm = () => {
 
@@ -109,4 +110,4 @@ const SignupForm = () => {
   )
 }
 
-export default SignupForm
+export default SignupForm;
