@@ -4,6 +4,8 @@ import { FaEyeSlash } from "react-icons/fa";
 
 const SignupForm = () => {
 
+    // const setIsLoggedIn = props.setIsLoggedIn;
+
     const [formData, setFormData] = useState({
         firstName:"",
         lastName:"",
