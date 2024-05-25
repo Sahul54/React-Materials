@@ -1,58 +1,62 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { baseUrl } from "../baseUrl";
 
-
-//step 1
+// Step 1
 export const AppContext = createContext();
 
-export default function AppContextProvider({children}){
+export default function AppContextProvider({ children }) {
     const [loading, setLoading] = useState(false);
-    const [post, setPost] = useState([]);
+    const [posts, setPosts] = useState([]);
     const [page, setPage] = useState(1);
-    const [totalpages, setTotalPages] = useState(null);
+    const [totalPages, setTotalPages] = useState(null);
 
-
-    // data filling
-    async function fetchBlogPost(page = 1){
+    // Data fetching
+    async function fetchBlogPost(page = 1) {
         setLoading(true);
-        let url = `${baseUrl}?page=${page}`
-        
-        try{
+        let url = `${baseUrl}?page=${page}`;
+
+        try {
             const result = await fetch(url);
             const data = await result.json();
             console.log(data);
             setPage(data.page);
-            setPost(data.posts);
-            setTotalPages(data.totalPages)
-        }
-        catch(error){
-            console.log("Error in fetaching data");
+            setPosts(data.posts);
+            setTotalPages(data.totalPages);
+        } catch (error) {
+            console.log("Error in fetching data", error);
             setPage(1);
-            setPost([]);
+            setPosts([]);
             setTotalPages(null);
         }
         setLoading(false);
     }
 
-    function handlePageChange(page){
-      setPage(page);
-      fetchBlogPost(page);
+    function handlePageChange(page) {
+        setPage(page);
+        fetchBlogPost(page);
     }
+
+    useEffect(() => {
+        fetchBlogPost(page);
+    }, [page]);
+
     const value = {
-        post, 
-        setPost,
+        posts,
+        setPosts,
         loading,
         setLoading,
         page,
         setPage,
-        totalpages,
+        totalPages,
         setTotalPages,
         fetchBlogPost,
         handlePageChange
     };
-   
-    //step 2
-    return <AppContextProvider value ={value}>
-        {children}
-    </AppContextProvider>
+
+    // Step 2
+    return (
+        <AppContext.Provider value={value}>
+            {children}
+        </AppContext.Provider>
+    );
 }
