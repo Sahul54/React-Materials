@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import Iteam from './components/Iteam'
-import Date from './components/Date'
-// import data from'./data/data'
+
 
 
 function App() {
